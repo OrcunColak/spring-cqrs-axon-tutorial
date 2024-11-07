@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  axonserver:
+    image: axoniq/axonserver
+    container_name: axon-server
+    ports:
+      # http://localhost:8024
+      - "8024:8024"    # Management UI
+      - "8124:8124"    # Default Axon Server port
+    environment:
+      - AXONIQ_AXONSERVER_DEVMODE_ENABLED=true
+    volumes:
+      - axon-data:/data
+      - axon-events:/eventdata
+
+volumes:
+  axon-data:
+  axon-events:
